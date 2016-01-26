@@ -34,12 +34,15 @@ int		main(void)
   char		*other;
   char		*end;
 
-  str = my_malloc(sizeof(char) * 5);
-  other = my_malloc(sizeof(char) * 3);
-  g_block->is_free = true;
+  str = my_malloc(sizeof(char) * 55);
+  other = my_malloc(sizeof(char) * 50);
+  end = my_malloc(sizeof(char) * 51);
+  g_block->is_free = false;
   g_block->next->is_free = true;
-  other = my_malloc(sizeof(char) * 5);
-  str = my_malloc(sizeof(char) * 3);
+  g_block->next->next->is_free = true;
+  brk(end-(sizeof(t_block)));
+  other = my_malloc(sizeof(char) * 50);
+  //str = my_malloc(sizeof(char) * 3);
   //strcpy(str, "OK");
   //strcpy(other, "salut");
   /*
