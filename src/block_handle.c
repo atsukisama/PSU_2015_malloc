@@ -66,7 +66,8 @@ void		show_alloc_mem()
   printf("break : %p\n", b);
   while (tmp != NULL)
     {
-      printf("%p - %p : %d bytes\n", tmp->adr_start, tmp->adr_start + tmp->block_size, tmp->block_size);
+      if (tmp->is_free == false)
+	printf("%p - %p : %d bytes\n", tmp->adr_start, tmp->adr_start + tmp->block_size, tmp->block_size);
       tmp = tmp->next;
     }
 }

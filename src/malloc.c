@@ -24,6 +24,7 @@ void		*my_malloc(size_t size)
   if (new_block == NULL)
     return (NULL);
   new_block->adr_start = (new_block)+1;
+  printf("MALLOC\n");
   new_block->is_free = false;
   return (new_block->adr_start);
 }
@@ -35,19 +36,25 @@ int		main(void)
   char		*other;
   char		*end;
 
-  str = my_malloc(sizeof(char) * 3);
+  str = my_malloc(sizeof(char) * 5);
+  other = my_malloc(sizeof(char) * 3);
+  g_block->is_free = true;
+  g_block->next->is_free = true;
   other = my_malloc(sizeof(char) * 5);
-  strcpy(str, "OK");
-  strcpy(other, "salut");
+  str = my_malloc(sizeof(char) * 3);
+  //strcpy(str, "OK");
+  //strcpy(other, "salut");
+  /*
   //free start
   g_block->is_free = true;
   free = (char*)(g_block->adr_start);
   free[0] = 0;
   //free end
+  */
   //str = my_malloc(sizeof(char) * 3);
   //strcpy(str, "salut");
   //strcpy(other, "test");
-  printf("%s\n%s\n", g_block->adr_start+1, other);
-  //show_alloc_mem();
+  //printf("%s\n%s\n", g_block->adr_start+1, other);
+  show_alloc_mem();
   return (true);
 }
