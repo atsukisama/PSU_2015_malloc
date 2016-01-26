@@ -13,18 +13,20 @@
 t_block		*check_block(size_t size)
 {
   t_block	*tmp;
+  t_block	*prev;
   t_block	*ret;
-  size_t	i;
 
   ret = NULL;
   tmp = g_block;
   while (tmp != NULL)
     {
-      i = tmp->block_size;
-      if (i >= size && tmp->is_free == true)
+      if (tmp->is_free == true && tmp->block_size >= size)
 	{
-	  ret = tmp;
-	  printf("YES\n");
+	  prev = tmp;
+	  if (ret != NULL && ret->block_size < tmp->block_size)
+	    ret = tmp;
+	  else
+	    ret = tmp;
 	}
       tmp = tmp->next;
     }
