@@ -52,7 +52,7 @@ int		main(void)
   char		*end;
 
   str = my_malloc(sizeof(char) * 120);
-  g_block->is_free = true;
+  g_block->is_free = true; //free imitation
   other = my_malloc(sizeof(char) * 20);
   end = my_malloc(sizeof(char) * 60);
   free = my_malloc(sizeof(char) * 20);
