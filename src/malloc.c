@@ -11,6 +11,22 @@
 #include "struct.h"
 #include <stdlib.h>
 
+void		check_split(t_block *current, size_t size)
+{
+  t_block	*new_block;
+
+  if (current->block_size > (size + sizeof(t_block)))
+    {
+      new_block = (current->adr_start) + size + 1;
+      new_block->adr_start = (new_block) + 1;
+      new_block->block_size = current->block_size - sizeof(t_block) - size;
+      current->block_size = size;
+      new_block->next = current->next;
+      current->next = new_block;
+      new_block->is_free = true;
+    }
+}
+
 void		*my_malloc(size_t size)
 {
   t_block	*new_block;
@@ -24,6 +40,7 @@ void		*my_malloc(size_t size)
   new_block->adr_start = (new_block)+1;
   printf("MALLOC\n");
   new_block->is_free = false;
+  check_split(new_block, size);
   return (new_block->adr_start);
 }
 
@@ -34,14 +51,20 @@ int		main(void)
   char		*other;
   char		*end;
 
-  str = my_malloc(sizeof(char) * 55);
+  str = my_malloc(sizeof(char) * 120);
+  g_block->is_free = true;
+  other = my_malloc(sizeof(char) * 20);
+  end = my_malloc(sizeof(char) * 60);
+  free = my_malloc(sizeof(char) * 20);
+  /*
   other = my_malloc(sizeof(char) * 50);
-  end = my_malloc(sizeof(char) * 51);
+  end = my_malloc(sizeof(int*) * 51);
   g_block->is_free = false;
   g_block->next->is_free = true;
   g_block->next->next->is_free = true;
   brk(end-(sizeof(t_block)));
   other = my_malloc(sizeof(char) * 50);
+  */
   //str = my_malloc(sizeof(char) * 3);
   //strcpy(str, "OK");
   //strcpy(other, "salut");
