@@ -11,13 +11,22 @@
 #ifndef STRUCT_H_
 # define STRUCT_H_
 
+#include <sys/types.h>
+#include <stdio.h>
+#include <string.h>
+#include <assert.h>
+#include <unistd.h>
 #include <stdbool.h>
 
-typedef struct	header	t_header;
+typedef struct	s_block	t_block;
 
-struct		header
+t_block	*g_block;
+
+struct			s_block
 {
-  struct header	*first;
+  size_t		block_size;
+  int			is_free;
+  struct s_block	*next;
 };
 
 #endif		/* struct */

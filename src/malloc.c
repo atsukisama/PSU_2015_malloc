@@ -8,18 +8,20 @@
 ** Last update Mon Jan 25 23:52:08 2016 Thomas Martins
 */
 
-#include <sys/types.h>
-#include <stdio.h>
-#include <string.h>
-#include <assert.h>
-#include <unistd.h>
 #include "struct.h"
 
 void		*my_malloc(size_t size)
 {
-  void *start;
-  void *requested;
+  void		*start;
+  void		*requested;
+  t_block	*new_block;
 
+  if (size == 0)
+    return (NULL);
+  if (g_block == NULL)
+    {
+      
+    }
   start = sbrk(0);
   requested = sbrk(size);
   if (requested == (void*) -1)
@@ -35,10 +37,20 @@ int		main(void)
 {
   char		*str;
   char		*other;
+  char		*end;
 
   str = my_malloc(sizeof(char) * 5);
-  other = my_malloc(sizeof(char) * 10);
-  strcpy(str, "salaaaaaaa");
+  other = my_malloc(sizeof(char) * 5);
+  //sbrk(sizeof(str) + 5);
+  brk(str);
+  //strcpy(other, "salu");
+  /*
+  end = my_malloc(sizeof(char) * 10);
+  //strcpy(end, "replace");
+  printf("%s\n", other);
+  printf("%s\n", end);
+  //strcpy(str, "salaaaaaaa");
   //printf("%s\n", str);
+  */
   return (0);
 }
