@@ -9,6 +9,7 @@
 */
 
 #include "struct.h"
+#include <stdlib.h>
 
 void		*my_malloc(size_t size)
 {
@@ -18,7 +19,8 @@ void		*my_malloc(size_t size)
 
   if (size == 0)
     return (NULL);
-  new_block = check_mem(size);
+  if ((new_block = check_block(size)) == NULL)
+    new_block = check_mem(size);
   if (new_block == NULL)
     return (NULL);
   new_block->adr_start = (new_block)+1;
@@ -28,15 +30,24 @@ void		*my_malloc(size_t size)
 
 int		main(void)
 {
+  char		*free;
   char		*str;
   char		*other;
   char		*end;
 
-  str = my_malloc(sizeof(char) * 6);
+  str = my_malloc(sizeof(char) * 3);
   other = my_malloc(sizeof(char) * 5);
-  strcpy(str, "salut");
-  strcpy(other, "test");
-  printf("%s\n%s\n", str, other);
-  show_alloc_mem();
+  strcpy(str, "OK");
+  strcpy(other, "salut");
+  //free start
+  g_block->is_free = true;
+  free = (char*)(g_block->adr_start);
+  free[0] = 0;
+  //free end
+  //str = my_malloc(sizeof(char) * 3);
+  //strcpy(str, "salut");
+  //strcpy(other, "test");
+  printf("%s\n%s\n", g_block->adr_start+1, other);
+  //show_alloc_mem();
   return (true);
 }

@@ -30,4 +30,8 @@ struct			s_block
   struct s_block	*next;
 };
 
+t_block         *check_block(size_t size);
+t_block         *check_mem(size_t size);
+void            show_alloc_mem();
+
 #endif		/* struct */

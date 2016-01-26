@@ -16,19 +16,18 @@ t_block		*check_block(size_t size)
   t_block	*ret;
   size_t	i;
 
-  i = 0;
+  ret = NULL;
   tmp = g_block;
   while (tmp != NULL)
     {
-      if (i >= size && i < tmp->block_size && tmp->is_free == true)
+      i = tmp->block_size;
+      if (i >= size && tmp->is_free == true)
 	{
-	  i = tmp->block_size;
 	  ret = tmp;
+	  printf("YES\n");
 	}
       tmp = tmp->next;
     }
-  if (i == 0)
-    return (NULL);
   return (ret);
 }
 
@@ -57,9 +56,12 @@ t_block		*check_mem(size_t size)
 
 void		show_alloc_mem()
 {
+  void		*b;
   t_block	*tmp;
 
+  b = sbrk(0);
   tmp = g_block;
+  printf("break : %p\n", b);
   while (tmp != NULL)
     {
       printf("%p - %p : %d bytes\n", tmp->adr_start, tmp->adr_start + tmp->block_size, tmp->block_size);
