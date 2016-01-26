@@ -32,19 +32,37 @@ t_block		*check_block(size_t size)
   return (ret);
 }
 
-t_block		*check_mem(t_block *block, size_t size)
+t_block		*check_mem(size_t size)
 {
   t_block	*new_block;
+  t_block	*tmp;
   void		*request;
 
+  tmp = g_block;
   new_block = sbrk(0);
   request = sbrk(sizeof(t_block) + size);
   if (request == (void *) -1)
     return (NULL);
-  if (block != NULL)
-    block->next = new_block;
-  block->block_size = size;
-  block->next = NULL;
-  block->is_free = true;
+  while (tmp != NULL && tmp->next != NULL)
+    tmp = tmp->next;
+  if (tmp != NULL)
+    tmp->next = new_block;
+  else
+    g_block = new_block;
+  new_block->block_size = size;
+  new_block->next = NULL;
+  new_block->is_free = true;
   return (new_block);
+}
+
+void		show_alloc_mem()
+{
+  t_block	*tmp;
+
+  tmp = g_block;
+  while (tmp != NULL)
+    {
+      printf("%p - %p : %d bytes\n", tmp->adr_start, tmp->adr_start + tmp->block_size, tmp->block_size);
+      tmp = tmp->next;
+    }
 }

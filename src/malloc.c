@@ -18,19 +18,12 @@ void		*my_malloc(size_t size)
 
   if (size == 0)
     return (NULL);
-  if (g_block == NULL)
-    {
-      
-    }
-  start = sbrk(0);
-  requested = sbrk(size);
-  if (requested == (void*) -1)
-    return NULL;
-  if (start == requested);
-  {
-    printf("add : %p\n", requested);
-    return (start);
-  }
+  new_block = check_mem(size);
+  if (new_block == NULL)
+    return (NULL);
+  new_block->adr_start = (new_block)+1;
+  new_block->is_free = false;
+  return (new_block->adr_start);
 }
 
 int		main(void)
@@ -39,8 +32,11 @@ int		main(void)
   char		*other;
   char		*end;
 
-  str = my_malloc(sizeof(char) * 5);
+  str = my_malloc(sizeof(char) * 6);
   other = my_malloc(sizeof(char) * 5);
-  brk(str);
+  strcpy(str, "salut");
+  strcpy(other, "test");
+  printf("%s\n%s\n", str, other);
+  show_alloc_mem();
   return (true);
 }
