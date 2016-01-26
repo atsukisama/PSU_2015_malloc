@@ -13,7 +13,6 @@
 t_block		*check_block(size_t size)
 {
   t_block	*tmp;
-  t_block	*prev;
   t_block	*ret;
 
   ret = NULL;
@@ -22,10 +21,9 @@ t_block		*check_block(size_t size)
     {
       if (tmp->is_free == true && tmp->block_size >= size)
 	{
-	  prev = tmp;
 	  if (ret != NULL && ret->block_size < tmp->block_size)
 	    ret = tmp;
-	  else
+	  else if (ret == NULL)
 	    ret = tmp;
 	}
       tmp = tmp->next;
