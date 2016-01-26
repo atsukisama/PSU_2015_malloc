@@ -21,7 +21,7 @@ t_block		*check_block(size_t size)
     {
       if (tmp->is_free == true && tmp->block_size >= size)
 	{
-	  if (ret != NULL && ret->block_size < tmp->block_size)
+	  if (ret != NULL && tmp->block_size < ret->block_size)
 	    ret = tmp;
 	  else if (ret == NULL)
 	    ret = tmp;
