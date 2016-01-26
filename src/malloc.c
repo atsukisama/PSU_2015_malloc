@@ -13,8 +13,6 @@
 
 void		*my_malloc(size_t size)
 {
-  void		*start;
-  void		*requested;
   t_block	*new_block;
 
   if (size == 0)
