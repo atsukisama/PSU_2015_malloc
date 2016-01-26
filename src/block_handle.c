@@ -5,7 +5,7 @@
 ** Login   <paul.kerebel@epitech.eu>
 ** 
 ** Started on  Tue Jan 26 13:09:58 2016 kerebe_p
-** Last update Tue Jan 26 14:24:57 2016 Thomas Martins
+** Last update Tue Jan 26 14:41:22 2016 Thomas Martins
 */
 
 #include "struct.h"
@@ -19,7 +19,7 @@ t_block		*check_mem(t_block *block, size_t size)
   request = sbrk(sizeof(t_block) + size);
   if (request == (void *) -1)
     return (NULL);
-  else if (block != NULL)
+  if (block != NULL)
     block->next = new_block;
   block->block_size = size;
   block->next = NULL;
