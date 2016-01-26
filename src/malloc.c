@@ -5,7 +5,7 @@
 ** Login   <mart_4@epitech.net>
 **
 ** Started on  Mon Jan 25 23:52:07 2016 Thomas Martins
-** Last update Mon Jan 25 23:52:08 2016 Thomas Martins
+** Last update Tue Jan 26 13:44:24 2016 Thomas Martins
 */
 
 #include "struct.h"
@@ -41,16 +41,6 @@ int		main(void)
 
   str = my_malloc(sizeof(char) * 5);
   other = my_malloc(sizeof(char) * 5);
-  //sbrk(sizeof(str) + 5);
   brk(str);
-  //strcpy(other, "salu");
-  /*
-  end = my_malloc(sizeof(char) * 10);
-  //strcpy(end, "replace");
-  printf("%s\n", other);
-  printf("%s\n", end);
-  //strcpy(str, "salaaaaaaa");
-  //printf("%s\n", str);
-  */
-  return (0);
+  return (true);
 }
