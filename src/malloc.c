@@ -61,7 +61,8 @@ int		main(void)
 
   char *t = my_malloc(sizeof(char) * 10);
 
-  //t = &t[11];
+  strcpy(t, "aaaaaaaaa");
+  t = &t[4];
 
   free(t);
 

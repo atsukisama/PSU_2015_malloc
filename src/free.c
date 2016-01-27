@@ -33,10 +33,12 @@ void		free(void *ptr)
 {
   t_block	*tmp;
 
-  if (ptr != NULL)
+  if (ptr != NULL && g_block != NULL)
     {
       tmp = (t_block*)ptr - 1;
-      tmp->is_free = true;
+      printf("size %d\n", tmp->block_size);
+      if (tmp->block_size > 0)
+	tmp->is_free = true;
       // merge block
       // brk on end block
     }
