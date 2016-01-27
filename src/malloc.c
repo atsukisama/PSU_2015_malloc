@@ -5,7 +5,7 @@
 ** Login   <mart_4@epitech.net>
 **
 ** Started on  Mon Jan 25 23:52:07 2016 Thomas Martins
-** Last update Tue Jan 26 13:44:24 2016 Thomas Martins
+** Last update Wed Jan 27 10:40:55 2016 Thomas martin
 */
 
 #include "struct.h"
@@ -46,7 +46,7 @@ void		*my_malloc(size_t size)
 
 int		main(void)
 {
-  char		*free;
+  // char		*free;
   char		*str;
   char		*other;
   char		*end;
@@ -55,7 +55,14 @@ int		main(void)
   g_block->is_free = true; //free imitation
   other = my_malloc(sizeof(char) * 20);
   end = my_malloc(sizeof(char) * 60);
-  free = my_malloc(sizeof(char) * 20);
+  //free = my_malloc(sizeof(char) * 20);
+
+
+
+  char *t = malloc(sizeof(char) * 10);
+
+  free(t);
+
   /*
   other = my_malloc(sizeof(char) * 50);
   end = my_malloc(sizeof(int*) * 51);
@@ -68,13 +75,12 @@ int		main(void)
   //str = my_malloc(sizeof(char) * 3);
   //strcpy(str, "OK");
   //strcpy(other, "salut");
-  /*
-  //free start
-  g_block->is_free = true;
-  free = (char*)(g_block->adr_start);
-  free[0] = 0;
-  //free end
-  */
+  /* free start */
+  /* g_block->is_free = true; */
+  /* free = (char*)(g_block->adr_start); */
+  /* free[0] = 0; */
+  /* free end */
+
   //str = my_malloc(sizeof(char) * 3);
   //strcpy(str, "salut");
   //strcpy(other, "test");

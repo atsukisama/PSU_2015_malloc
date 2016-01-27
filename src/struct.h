@@ -5,7 +5,7 @@
 ** Login   <mart_4@epitech.net>
 **
 ** Started on  Mon Jan 25 23:48:39 2016 Thomas Martins
-** Last update Tue Jan 26 14:17:20 2016 Thomas Martins
+** Last update Tue Jan 26 18:57:50 2016 Thomas Martins
 */
 
 #ifndef STRUCT_H_
@@ -30,8 +30,8 @@ struct			s_block
   struct s_block	*next;
 };
 
-t_block         *check_block(size_t size);
-t_block         *check_mem(size_t size);
-void            show_alloc_mem();
+t_block			*check_block(size_t size);
+t_block			*check_mem(size_t size);
+void			show_alloc_mem();
 
 #endif		/* struct */
