@@ -37,6 +37,8 @@ void		free(void *ptr)
     {
       tmp = (t_block*)ptr - 1;
       tmp->is_free = true;
+      // merge block
+      // brk on end block
     }
   /*
   tmp = g_block;
