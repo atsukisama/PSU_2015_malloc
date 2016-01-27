@@ -5,7 +5,7 @@
 ** Login   <paul.kerebel@epitech.eu>
 ** 
 ** Started on  Tue Jan 26 13:09:58 2016 kerebe_p
-** Last update Tue Jan 26 14:52:24 2016 Thomas Martins
+** Last update Wed Jan 27 14:38:42 2016 Thomas Martins
 */
 
 #include "struct.h"
@@ -65,7 +65,9 @@ void		show_alloc_mem()
   while (tmp != NULL)
     {
       if (tmp->is_free == false)
-	printf("%p - %p : %d bytes\n", tmp->adr_start, tmp->adr_start + tmp->block_size, tmp->block_size);
+	printf("%p - %p : %d bytes (used)\n", tmp->adr_start, tmp->adr_start + tmp->block_size, tmp->block_size);
+      if (tmp->is_free == true)
+	printf("%p - %p : %d bytes (unused)\n", tmp->adr_start, tmp->adr_start + tmp->block_size, tmp->block_size);
       tmp = tmp->next;
     }
 }
