@@ -62,27 +62,27 @@ int		main(void)
 
 
   char *t = my_malloc(sizeof(char) * 10);
-  char *lol = my_malloc(sizeof(char) * 10);
-  char	*h = my_malloc(sizeof(char) * 10);
+  //char *lol = my_malloc(sizeof(char) * 10);
+  //char	*h = my_malloc(sizeof(char) * 10);
 
 
   strcpy(t, "abcdertio");
 
-  strcpy(h, "ooooooooo");
+  //  strcpy(h, "ooooooooo");
 
-  strcpy(lol, "aaaaaaaaa");
+  //strcpy(lol, "aaaaaaaaa");
 
   free(t);
-  free(h);
-  free(lol);
+  //free(h);
+  //free(lol);
   tmp = g_block;
+  /*
   while (tmp)
     {
-      printf("B ");
-      if (tmp->is_free == true)
+      while (tmp->is_free == true && tmp->next != NULL)
 	tmp = merge_block(tmp->adr_start);
       tmp = tmp->next;
-    }
+      }*/
 
 
   /*

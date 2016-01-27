@@ -29,16 +29,12 @@ t_block		*merge_block(void *ptr)
   t_block	*tmp;
 
   tmp = (t_block*)ptr - 1;
-   if (tmp->next != NULL && tmp->next->is_free == true)
-  {
+  if (tmp->next != NULL && tmp->next->is_free == true)
+    {
       printf("MERGE\n");
       tmp->block_size += sizeof(t_block) + tmp->next->block_size;
-      if (tmp->next->next != NULL)
-	tmp->next = tmp->next->next;
-      else
-	tmp->next = NULL;
-  }
-   merge_block(ptr);
+      tmp->next = tmp->next->next;
+    }
   return (tmp);
 }
 
@@ -48,6 +44,15 @@ void		free(void *ptr)
 
   tmp = (t_block *)ptr - 1;
   tmp->is_free = true;
+  tmp = g_block;
+  while (tmp)
+    {
+      while (tmp->is_free == true && tmp->next != NULL)
+	tmp = merge_block(tmp->adr_start);
+      tmp = tmp->next;
+    }
+  //  if (tmp->is_free == true && tmp->next == NULL)
+  //brk(tmp);
 }
 
  // merge block
