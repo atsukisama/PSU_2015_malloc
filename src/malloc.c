@@ -51,15 +51,17 @@ int		main(void)
   char		*other;
   char		*end;
 
-  str = my_malloc(sizeof(char) * 120);
-  g_block->is_free = true; //free imitation
-  other = my_malloc(sizeof(char) * 20);
-  end = my_malloc(sizeof(char) * 60);
+  //str = my_malloc(sizeof(char) * 120);
+  //g_block->is_free = true; //free imitation
+  //other = my_malloc(sizeof(char) * 20);
+  //end = my_malloc(sizeof(char) * 60);
   //free = my_malloc(sizeof(char) * 20);
 
 
 
-  char *t = malloc(sizeof(char) * 10);
+  char *t = my_malloc(sizeof(char) * 10);
+
+  //t = &t[11];
 
   free(t);
 

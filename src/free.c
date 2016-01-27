@@ -33,6 +33,12 @@ void		free(void *ptr)
 {
   t_block	*tmp;
 
+  if (ptr != NULL)
+    {
+      tmp = (t_block*)ptr - 1;
+      tmp->is_free = true;
+    }
+  /*
   tmp = g_block;
   if (ptr == NULL)
     return ;
@@ -44,5 +50,5 @@ void		free(void *ptr)
 	  printf("oui\n");
 	}
       tmp = tmp->next;
-    }
+      }*/
 }
