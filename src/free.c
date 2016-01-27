@@ -32,16 +32,14 @@ void		merge_block(void)
 void		free(void *ptr)
 {
   t_block	*tmp;
-  t_block	*cast;
 
   tmp = g_block;
   if (ptr == NULL)
     return ;
   while (tmp != NULL)
     {
-      cast = (t_block*)ptr - 1;
-      printf("%p && %p\n", cast, ptr);
-      if (cast->adr_start == ptr)
+      printf("%p && %p\n", tmp->adr_start, ptr);
+      if (tmp->adr_start == ptr)
 	{
 	  printf("oui\n");
 	}
