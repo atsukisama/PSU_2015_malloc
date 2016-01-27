@@ -5,7 +5,7 @@
 ** Login   <mart_4@epitech.net>
 **
 ** Started on  Wed Jan 27 09:37:38 2016 Thomas martin
-** Last update Wed Jan 27 16:03:25 2016 Thomas Martins
+** Last update Wed Jan 27 17:51:52 2016 Thomas Martins
 */
 
 #include "struct.h"
@@ -31,29 +31,44 @@ t_block		*merge_block(void *ptr)
   tmp = (t_block*)ptr - 1;
   if (tmp->next != NULL && tmp->next->is_free == true)
     {
-      printf("MERGE\n");
       tmp->block_size += sizeof(t_block) + tmp->next->block_size;
       tmp->next = tmp->next->next;
     }
   return (tmp);
 }
 
-void		free(void *ptr)
+void		my_free(void *ptr)
 {
   t_block	*tmp;
+  t_block	*temp;
+  t_block	*delete;
 
-  tmp = (t_block *)ptr - 1;
-  tmp->is_free = true;
+  delete = NULL;
+  temp = NULL;
   tmp = g_block;
+  if (tmp->adr_start == ptr)
+    tmp->is_free = true;
   while (tmp)
     {
-      while (tmp->is_free == true && tmp->next != NULL)
+      if (tmp->next != NULL && tmp->next->adr_start == ptr)
+	tmp->next->is_free = true;
+      while (tmp->is_free == true && tmp->next != NULL && tmp->next->is_free == true)
 	tmp = merge_block(tmp->adr_start);
+      if (tmp->next == NULL)
+	delete = tmp;
+      if (tmp->next != NULL)
+	{
+	  if (tmp->next->is_free == true && tmp->next->next == NULL)
+	    temp = tmp;
+	}
       tmp = tmp->next;
     }
-  //  if (tmp->is_free == true && tmp->next == NULL)
-  //brk(tmp);
+  if (temp != NULL)
+    temp->next = NULL;
+  if (delete != NULL && delete->is_free == true && delete->next == NULL)
+    {
+      brk(delete->adr_start - sizeof(t_block));
+      if (delete == g_block)
+	g_block = NULL;
+    }
 }
-
- // merge block
-// brk on end block

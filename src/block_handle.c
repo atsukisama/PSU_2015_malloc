@@ -5,7 +5,7 @@
 ** Login   <paul.kerebel@epitech.eu>
 ** 
 ** Started on  Tue Jan 26 13:09:58 2016 kerebe_p
-** Last update Wed Jan 27 14:38:42 2016 Thomas Martins
+** Last update Wed Jan 27 16:54:49 2016 Thomas Martins
 */
 
 #include "struct.h"
@@ -38,7 +38,7 @@ t_block		*check_mem(size_t size)
   void		*request;
 
   tmp = g_block;
-  new_block = sbrk(0);
+  new_block = (t_block*)sbrk(0);
   request = sbrk(sizeof(t_block) + size);
   if (request == (void *) -1)
     return (NULL);

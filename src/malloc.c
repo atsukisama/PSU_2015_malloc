@@ -5,7 +5,7 @@
 ** Login   <mart_4@epitech.net>
 **
 ** Started on  Mon Jan 25 23:52:07 2016 Thomas Martins
-** Last update Wed Jan 27 16:01:16 2016 Thomas Martins
+** Last update Wed Jan 27 17:50:14 2016 Thomas Martins
 */
 
 #include "struct.h"
@@ -61,21 +61,20 @@ int		main(void)
 
 
 
-  char *t = my_malloc(sizeof(char) * 10);
-  //char *lol = my_malloc(sizeof(char) * 10);
-  //char	*h = my_malloc(sizeof(char) * 10);
+  /* char *t = my_malloc(sizeof(char) * 10); */
+  char *lol = my_malloc(sizeof(char) * 10);
+  /* char	*h = my_malloc(sizeof(char) * 10); */
 
 
-  strcpy(t, "abcdertio");
+  /* strcpy(t, "abcdertio"); */
 
-  //  strcpy(h, "ooooooooo");
+  /* strcpy(h, "ooooooooo"); */
 
-  //strcpy(lol, "aaaaaaaaa");
+  strcpy(lol, "aaaaaaaaa");
 
-  free(t);
-  //free(h);
-  //free(lol);
-  tmp = g_block;
+  /* my_free(t); */
+  /* my_free(h); */
+  my_free(lol);
   /*
   while (tmp)
     {
