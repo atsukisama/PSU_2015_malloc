@@ -16,20 +16,8 @@ int	main(void)
   char	*str;
   int	i = 0;
 
-  str = my_malloc(98347);
-  str = my_malloc(5);
-  /*
-  while (i < 100000 && str != NULL)
-    {
-      //printf("loop : %d\r", i);
-      str = my_malloc(1);
-      i++;
-      }*/
-  //printf("%p\n", MAGIC);
-  if ((intptr_t)str % sizeof(void*) == 0)
-    {
-      printf("%d\n", sizeof(void*));
-      printf("SUCCESS!\n");
-    }
+  str = my_malloc(1);
+  show_alloc_pro();
+  str = my_malloc(4065);
   show_alloc_pro();
 }

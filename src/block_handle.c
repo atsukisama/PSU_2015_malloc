@@ -32,7 +32,7 @@ t_block		*check_block(size_t size)
 
   ret = NULL;
   tmp = g_block;
-  while (tmp != NULL)
+  while (tmp != NULL && tmp->next != NULL)
     {
       if (tmp->is_free == true && tmp->block_size >= size)
 	{
@@ -41,6 +41,8 @@ t_block		*check_block(size_t size)
 	}
       tmp = tmp->next;
     }
+  if (tmp != NULL && tmp->is_free == true)
+    ret = tmp;
   return (ret);
 }
 
