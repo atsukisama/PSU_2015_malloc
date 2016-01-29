@@ -1,4 +1,3 @@
-
 /*
 ** free.c for  in /home/mart_4/rendu/PSU_2015_malloc/src
 **
@@ -23,11 +22,8 @@ void		check(void)
     }
 }
 
-t_block		*merge_block(void *ptr)
+t_block		*merge_block(t_block *tmp)
 {
-  t_block	*tmp;
-
-  tmp = (t_block*)ptr - 1;
   if (tmp->next != NULL && tmp->next->is_free == true)
     {
       tmp->block_size += sizeof(t_block) + tmp->next->block_size;
@@ -48,5 +44,17 @@ void		reduce_mem(t_block *delete)
 
 void		my_free(void *ptr)
 {
-  (void)ptr;
+  t_block	*block;
+
+  if (g_block != NULL && (intptr_t)ptr < (intptr_t)sbrk(0))
+    {
+      block = ptr - sizeof(t_block);
+      if (block->magic == MAGIC)
+	{
+	  block->is_free = true;
+	  while (block->next != NULL && block->next->is_free == true)
+	    block = merge_block(block);
+	  reduce_mem(block);
+	}
+    }
 }

@@ -16,8 +16,8 @@ int	main(void)
   char	*str;
 
   (void)str;
-  str = my_malloc(1);
-  show_alloc_pro();
-  str = my_malloc(4065);
+  str = my_malloc(8);
+  my_malloc(16);
+  my_free(str);
   show_alloc_pro();
 }
