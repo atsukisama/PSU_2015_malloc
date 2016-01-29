@@ -42,6 +42,8 @@ void		my_free(void *ptr)
       if (block->magic == MAGIC)
 	{
 	  block->is_free = true;
+	  if (block->prev != NULL && block->prev->is_free == true)
+	    block = block->prev;
 	  while (block->next != NULL && block->next->is_free == true)
 	    block = merge_block(block);
 	  reduce_mem(block);
