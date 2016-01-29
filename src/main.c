@@ -19,10 +19,10 @@ int	main(void)
   char	*end;
 
   show_alloc_pro();
-  str = my_malloc(-1);
+  str = my_malloc(8);
   start = my_malloc(8);
   mid = my_malloc(8);
-  end = my_malloc(8);
+  end = my_malloc(-1);
   show_alloc_pro();
   my_free(end);
   show_alloc_pro();
