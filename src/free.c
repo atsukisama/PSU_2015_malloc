@@ -37,10 +37,10 @@ void		my_free(void *ptr)
 {
   t_block	*block;
 
-  if (g_block != NULL && (intptr_t)ptr < (intptr_t)sbrk(0))
+  if (g_block != NULL && (intptr_t)ptr < (intptr_t)sbrk(0) && (intptr_t)ptr > (intptr_t)g_block)
     {
       block = ptr - sizeof(t_block);
-      if (block->magic == MAGIC)
+      if ((intptr_t)block >= (intptr_t)g_block && block->magic == MAGIC)
 	{
 	  block->is_free = true;
 	  while (block->prev != NULL && block->prev->is_free == true)
