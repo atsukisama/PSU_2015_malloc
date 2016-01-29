@@ -10,18 +10,6 @@
 
 #include "struct.h"
 
-void		check(void)
-{
-  t_block	*tmp;
-
-  tmp = g_block;
-
-  while (tmp)
-    {
-      tmp = tmp->next;
-    }
-}
-
 t_block		*merge_block(t_block *tmp)
 {
   if (tmp->next != NULL && tmp->next->is_free == true)
