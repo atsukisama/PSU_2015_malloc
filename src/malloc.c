@@ -62,6 +62,7 @@ void		*my_malloc(size_t size)
   new_block = NULL;
   if ((intptr_t)size <= 0)
     return (NULL);
+  size = size + (sizeof(void*) - size % sizeof(void*));
   if ((new_block = check_block(size)) == NULL)
     new_block = ask_mem(size);
   if (new_block == NULL)

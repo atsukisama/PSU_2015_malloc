@@ -11,7 +11,7 @@
 #ifndef STRUCT_H_
 # define STRUCT_H_
 # define MAGIC 1120599618
-# define SUPPLEMENT 4096
+# define SUPPLEMENT 0
 
 # include <sys/types.h>
 # include <stdio.h>
