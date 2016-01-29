@@ -13,6 +13,7 @@
 
 t_block	*g_block = NULL;
 
+// DEBUT DE PLAGE
 void		check_split(t_block *current, size_t size)
 {
   t_block	*new_block;
@@ -30,7 +31,7 @@ void		check_split(t_block *current, size_t size)
     }
 }
 
-/* FIN DE PAGE
+/* FIN DE PLAGE
 t_block		*check_split(t_block *current, size_t size)
 {
   t_block	*new_block;
@@ -76,6 +77,7 @@ void		*my_malloc(size_t size)
     new_block = ask_mem(size);
   if (new_block == NULL)
     return (NULL);
+  //new_block = check_split(new_block, size); FIN DE PLAGE
   check_split(new_block, size);
   new_block->is_free = false;
   pointer = new_block + 1;

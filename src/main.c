@@ -14,8 +14,8 @@
 int	main(void)
 {
   char	*str;
-  int	i = 0;
 
+  (void)str;
   str = my_malloc(1);
   show_alloc_pro();
   str = my_malloc(4065);

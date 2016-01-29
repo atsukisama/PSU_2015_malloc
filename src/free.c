@@ -19,14 +19,12 @@ void		check(void)
 
   while (tmp)
     {
-      printf("%d\n", tmp->block_size);
       tmp = tmp->next;
     }
 }
 
 t_block		*merge_block(void *ptr)
 {
-  char		*reset;
   t_block	*tmp;
 
   tmp = (t_block*)ptr - 1;
@@ -50,35 +48,5 @@ void		reduce_mem(t_block *delete)
 
 void		my_free(void *ptr)
 {
-  /*
-  t_block	*tmp;
-  t_block	*temp;
-  t_block	*delete;
-
-  delete = NULL;
-  temp = NULL;
-  tmp = g_block;
-  if ((tmp + 1) == ptr)
-    tmp->is_free = true;
-  while (tmp)
-    {
-      if (tmp->next != NULL && (tmp->next + 1) == ptr)
-	tmp->next->is_free = true;
-      while (tmp->is_free == true && tmp->next != NULL && tmp->next->is_free == true)
-	tmp = merge_block(tmp + 1);
-      if (tmp->next == NULL)
-	delete = tmp;
-      if (tmp->next != NULL && tmp->next->is_free == true && tmp->next->next == NULL)
-	temp = tmp;
-      tmp = tmp->next;
-    }
-  if (temp != NULL)
-    temp->next = NULL;
-  if (delete != NULL && delete->is_free == true && delete->next == NULL)
-    {
-      brk(delete);
-      if (delete == g_block)
-	g_block = NULL;
-    }
-  */
+  (void)ptr;
 }

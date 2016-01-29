@@ -54,10 +54,6 @@ t_block		*ask_mem(size_t size)
 
   tmp = g_block;
   new_block = sbrk(0);
-  //if ((request = sbrk(sizeof(t_block) + size)) == (void *)-1)
-  //return (NULL);
-  //  if (request == (void *)-1)
-  //return (NULL);
   if ((request = check_mem(&size, SUPPLEMENT)) == NULL)
     return (NULL);
   while (tmp != NULL && tmp->next != NULL)
@@ -89,9 +85,8 @@ void		show_alloc_mem()
   printf("break : %p\n", b);
   while (tmp != NULL)
     {
-      if (tmp->is_free == false)
-	printf("%p - %p : %ld bytes\n", tmp + 1,
-	       (void*)tmp + sizeof(t_block) + tmp->block_size, tmp->block_size);
+      printf("%p - %p : %ld bytes\n", tmp + 1,
+	     (void*)tmp + sizeof(t_block) + tmp->block_size, tmp->block_size);
       tmp = tmp->next;
     }
 }
