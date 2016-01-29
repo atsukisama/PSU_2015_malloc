@@ -14,10 +14,12 @@
 int	main(void)
 {
   char	*str;
+  char	*end;
 
-  (void)str;
   str = my_malloc(8);
-  my_malloc(16);
+  end = my_malloc(16);
+  my_free(end);
+  show_alloc_pro();
   my_free(str);
   show_alloc_pro();
 }

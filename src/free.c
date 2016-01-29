@@ -39,6 +39,8 @@ void		reduce_mem(t_block *delete)
       brk(delete);
       if (delete == g_block)
 	g_block = NULL;
+      else
+	delete->prev->next = NULL;
     }
 }
 
