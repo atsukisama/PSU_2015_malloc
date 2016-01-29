@@ -63,6 +63,13 @@ void		*grow_mem(t_block *block, size_t size)
   return (NULL);
 }
 
+size_t		aligned_size(size_t size)
+{
+  if (size % sizeof(void*) != 0)
+    size = size + (sizeof(void*) - size % sizeof(void*));
+  return (size);
+}
+
 void		*my_malloc(size_t size)
 {
   t_block	*new_block;
@@ -72,7 +79,7 @@ void		*my_malloc(size_t size)
   pointer = NULL;
   if ((intptr_t)size <= 0)
     return (NULL);
-  size = size + (sizeof(void*) - size % sizeof(void*));
+  size = aligned_size(size);
   if ((new_block = check_block(size)) == NULL)
     new_block = ask_mem(size);
   if (new_block == NULL)

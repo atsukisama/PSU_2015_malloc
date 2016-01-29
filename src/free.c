@@ -22,7 +22,8 @@ t_block		*merge_block(t_block *tmp)
 
 void		reduce_mem(t_block *delete)
 {
-  if (delete != NULL && delete->is_free == true && delete->next == NULL)
+  if (delete != NULL && delete->prev == NULL
+      && delete->is_free == true && delete->next == NULL)
     {
       brk(delete);
       if (delete == g_block)
