@@ -5,7 +5,7 @@
 ** Login   <mart_4@epitech.net>
 **
 ** Started on  Mon Jan 25 23:52:07 2016 Thomas Martins
-** Last update Sat Jan 30 04:26:56 2016 Thomas martin
+** Last update Sat Jan 30 21:30:58 2016 Thomas Martins
 */
 
 #include "struct.h"
@@ -88,7 +88,6 @@ void		*malloc(size_t size)
   new_block->is_free = false;
   pointer = new_block + 1;
   pointer = grow_mem(new_block, size);
-
   return (pointer);
 }
 

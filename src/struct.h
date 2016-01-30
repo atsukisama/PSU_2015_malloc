@@ -5,7 +5,7 @@
 ** Login   <mart_4@epitech.net>
 **
 ** Started on  Mon Jan 25 23:48:39 2016 Thomas Martins
-** Last update Sat Jan 30 02:19:16 2016 Thomas martin
+** Last update Sat Jan 30 21:22:55 2016 Thomas Martins
 */
 
 #ifndef STRUCT_H_
