@@ -5,7 +5,7 @@
 ** Login   <mart_4@epitech.net>
 **
 ** Started on  Mon Jan 25 23:52:07 2016 Thomas Martins
-** Last update Tue Jan 26 13:44:24 2016 Thomas Martins
+** Last update Sat Jan 30 02:23:07 2016 Thomas martin
 */
 
 #include <stdlib.h>
@@ -70,24 +70,33 @@ size_t		aligned_size(size_t size)
   return (size);
 }
 
-void		*my_malloc(size_t size)
+void		*malloc(size_t size)
 {
-  t_block	*new_block;
-  void		*pointer;
+  (void)size;
+  /* t_block	*new_block; */
+  /* void		*pointer; */
 
-  new_block = NULL;
-  pointer = NULL;
-  if ((intptr_t)size <= 0)
-    return (NULL);
-  size = aligned_size(size);
-  if ((new_block = check_block(size)) == NULL)
-    new_block = ask_mem(size);
-  if (new_block == NULL)
-    return (NULL);
-  //new_block = check_split(new_block, size); FIN DE PLAGE
-  check_split(new_block, size);
-  new_block->is_free = false;
-  pointer = new_block + 1;
-  pointer = grow_mem(new_block, size);
-  return (pointer);
+  /* new_block = NULL; */
+  /* pointer = NULL; */
+  /* if ((intptr_t)size <= 0) */
+  /*   return (NULL); */
+  /* size = aligned_size(size); */
+  /* if ((new_block = check_block(size)) == NULL) */
+  /*   new_block = ask_mem(size); */
+  /* if (new_block == NULL) */
+  /*   return (NULL); */
+  /* //new_block = check_split(new_block, size); FIN DE PLAGE */
+  /* check_split(new_block, size); */
+  /* new_block->is_free = false; */
+  /* pointer = new_block + 1; */
+  /* pointer = grow_mem(new_block, size); */
+
+  return (NULL);
+}
+
+void	*realloc(void *ptr, size_t size)
+{
+  (void)size;
+  (void)ptr;
+  return (NULL);
 }

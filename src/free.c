@@ -5,7 +5,7 @@
 ** Login   <mart_4@epitech.net>
 **
 ** Started on  Wed Jan 27 09:37:38 2016 Thomas martin
-** Last update Wed Jan 27 17:51:52 2016 Thomas Martins
+** Last update Sat Jan 30 02:18:44 2016 Thomas martin
 */
 
 #include "struct.h"
@@ -33,7 +33,7 @@ void		reduce_mem(t_block *delete)
     }
 }
 
-void		my_free(void *ptr)
+void		free(void *ptr)
 {
   t_block	*block;
 

@@ -5,40 +5,45 @@
 ## Login   <mart_4@epitech.net>
 ##
 ## Started on  Mon Jan 25 23:08:27 2016 Thomas Martins
-## Last update Mon Jan 25 23:38:42 2016 Thomas Martins
+## Last update Sat Jan 30 02:32:36 2016 Thomas martin
 ##
 
-SRCDIR	= src/
-
-OBJ	= $(SRC:.c=.o)
-
-SRC	= src/malloc.c \
-
-NAME	= libmy_malloc_$(HOSTTYPE).so
+NAME 	= libmy_malloc_$(HOSTTYPE).so
 
 LINK	= libmy_malloc.so
 
+CC      = gcc
+
+SRC	= src/malloc.c 		\
+	  src/free.c 		\
+	  src/block_handle.c	\
+
+RM      = rm -f
+
+OBJ	= $(SRC:.c=.o)
+
 RM	= rm -f
 
-CFLAGS	:= -pedantic -shared -fPIC -lpthread
-CFLAGS	+= -W -Wall -Werror -Wextra -fPIC
+CFLAGS	+= -W -Wall -Wextra -Werror -fPIC
+LDFLAGS	+= -shared -fPIC -lpthread
 
-CC	= cc
+CC	= gcc
 
 all:	$(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+	$(CC) -o $(NAME) $(LDFLAGS) $(OBJ)
+	ln -sf $(NAME) $(LINK)
+
 
 %.o : %.c
 	$(CC) -c $(CFLAGS) -o $@ $^
-	ln -sf $(NAME) $(LINK)
 
 clean:
 	$(RM) $(OBJ)
 
 fclean: clean
-	$(RM) $(NAME)
 	$(RM) $(LINK)
+	$(RM) $(NAME)
 
 re: fclean all

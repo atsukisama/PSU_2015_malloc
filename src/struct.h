@@ -5,7 +5,7 @@
 ** Login   <mart_4@epitech.net>
 **
 ** Started on  Mon Jan 25 23:48:39 2016 Thomas Martins
-** Last update Tue Jan 26 14:17:20 2016 Thomas Martins
+** Last update Sat Jan 30 02:19:16 2016 Thomas martin
 */
 
 #ifndef STRUCT_H_
@@ -40,7 +40,7 @@ typedef struct		s_beta
   struct s_beta		*next;
 }			t_beta;
 
-void		*my_malloc(size_t size);
+void		*malloc(size_t size);
 t_block         *check_block(size_t size);
 t_block         *ask_mem(size_t size);
 void            show_alloc_mem();
