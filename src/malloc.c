@@ -8,7 +8,6 @@
 ** Last update Sat Jan 30 04:26:56 2016 Thomas martin
 */
 
-#include <stdlib.h>
 #include "struct.h"
 
 t_block	*g_block = NULL;
@@ -63,10 +62,10 @@ void		*grow_mem(t_block *block, size_t size)
   return (NULL);
 }
 
-size_t		aligned_size(size_t size)
+size_t		aligned_size(size_t size, int align)
 {
-  if (size % sizeof(void*) != 0)
-    size = size + (sizeof(void*) - size % sizeof(void*));
+  if (size % align != 0)
+    size = size + (align - size % align);
   return (size);
 }
 
@@ -79,7 +78,7 @@ void		*malloc(size_t size)
   pointer = NULL;
   if ((intptr_t)size <= 0)
     return (NULL);
-  size = aligned_size(size);
+  size = aligned_size(size, sizeof(void*));
   if ((new_block = check_block(size)) == NULL)
     new_block = ask_mem(size);
   if (new_block == NULL)
@@ -95,11 +94,14 @@ void		*malloc(size_t size)
 
 void		*realloc(void *ptr, size_t size)
 {
-  t_block	*block;
-  size_t	rsize;
+  (void)ptr;
+  (void)size;
+  //t_block	*block;
+  //size_t	rsize;
 
-  block = ptr - sizeof(t_block);
-  rsize = block->block_size;
-  free(ptr);
-  return (malloc(rsize + size));
+  //block = ptr - sizeof(t_block);
+  //rsize = block->block_size;
+  //free(ptr);
+  //return (malloc(size));
+  return (NULL);
 }

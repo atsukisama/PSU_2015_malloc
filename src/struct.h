@@ -43,7 +43,9 @@ typedef struct		s_beta
 void		*malloc(size_t size);
 t_block         *check_block(size_t size);
 t_block         *ask_mem(size_t size);
+size_t		aligned_size(size_t size, int align);
 void            show_alloc_mem();
 void            show_alloc_pro();
+void		free(void *ptr);
 
 #endif		/* struct */

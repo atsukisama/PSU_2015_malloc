@@ -14,10 +14,11 @@ void		*check_mem(size_t *size, int supp)
 {
   void		*request;
 
+  (void)supp;
   request = NULL;
-  if ((request = sbrk(sizeof(t_block) + *size + supp)) != (void *)-1)
+  if ((request = sbrk(aligned_size(sizeof(t_block) + *size, getpagesize()))) != (void *)-1)
     {
-      *size += supp;
+      *size = aligned_size(sizeof(t_block) + *size, getpagesize()) - sizeof(t_block);
       return (request);
     }
   if ((request = sbrk(sizeof(t_block) + *size)) != (void *)-1)
