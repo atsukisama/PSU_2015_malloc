@@ -1,1 +1,5 @@
-LD_PRELOAD=/home/kerebe_p/Documents/Epitech/PSU_2015_malloc/libmy_malloc_.so $1
+#! /bin/sh
+
+LOC=$(pwd)
+
+LD_PRELOAD=$LOC/libmy_malloc_.so $1

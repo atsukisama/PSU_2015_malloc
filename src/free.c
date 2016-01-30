@@ -37,14 +37,15 @@ void		free(void *ptr)
 {
   t_block	*block;
 
-  if (g_block != NULL && (intptr_t)ptr < (intptr_t)sbrk(0) && (intptr_t)ptr > (intptr_t)g_block)
+  if (ptr != NULL && g_block != NULL && (intptr_t)ptr < (intptr_t)sbrk(0)
+      && (intptr_t)ptr > (intptr_t)g_block)
     {
       block = ptr - sizeof(t_block);
       if ((intptr_t)block >= (intptr_t)g_block && block->magic == MAGIC)
 	{
 	  block->is_free = true;
-	  while (block->prev != NULL && block->prev->is_free == true)
-	    block = block->prev;
+	  //while (block->prev != NULL && block->prev->is_free == true) CHAOS BRINGER
+	  //block = block->prev;
 	  while (block->next != NULL && block->next->is_free == true)
 	    block = merge_block(block);
 	  reduce_mem(block);

@@ -22,7 +22,7 @@
 
 typedef struct	s_block	t_block;
 
-extern t_block	*g_block;
+t_block	*g_block;
 
 struct			s_block
 {

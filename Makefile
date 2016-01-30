@@ -24,7 +24,7 @@ OBJ	= $(SRC:.c=.o)
 
 RM	= rm -f
 
-CFLAGS	+= -W -Wall -Wextra -Werror -fPIC
+CFLAGS	+= -W -Wall -Wextra -Werror -fPIC -g
 LDFLAGS	+= -shared -fPIC -lpthread
 
 CC	= gcc

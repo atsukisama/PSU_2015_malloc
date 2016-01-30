@@ -10,7 +10,7 @@
 
 #include "struct.h"
 
-t_block	*g_block = NULL;
+//t_block	*g_block = NULL;
 
 // DEBUT DE PLAGE
 void		check_split(t_block *current, size_t size)
@@ -94,14 +94,34 @@ void		*malloc(size_t size)
 
 void		*realloc(void *ptr, size_t size)
 {
-  (void)ptr;
-  (void)size;
-  //t_block	*block;
-  //size_t	rsize;
+  t_block    *block;
+  size_t     rsize;
+  void               *new;
 
-  //block = ptr - sizeof(t_block);
-  //rsize = block->block_size;
-  //free(ptr);
-  //return (malloc(size));
+  //(void)rsize;
+  if (!ptr)
+    return (malloc(size));
+  //printf("TEST\n");
+  if (g_block != NULL && (intptr_t)ptr < (intptr_t)sbrk(0) && (intptr_t)ptr > (intptr_t)g_block)
+    {
+      block = ptr - sizeof(t_block);
+      //printf("TEST1\n");
+      if ((intptr_t)block >= (intptr_t)g_block && block->magic == MAGIC)
+     {
+       rsize = block->block_size;
+       //block->is_free = true;
+       free(ptr);
+       //printf("TEST2\n");
+       if ((new = malloc(size)) != NULL)
+         {
+	   //           printf("HERE\n");
+           memcpy(new, ptr, rsize);
+           //printf("END\n");
+           //free(ptr);
+         }
+       return (new);
+     }
+      return (ptr);
+    }
   return (NULL);
 }
