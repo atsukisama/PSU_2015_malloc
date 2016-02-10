@@ -20,10 +20,8 @@ t_block		*check_block(size_t size, t_block *g_mem)
 {
   t_block	*tmp;
   t_block	*ret;
-  t_block	*end;
 
   ret = NULL;
-  end = NULL;
   tmp = g_mem;
   while (tmp != NULL)
     {

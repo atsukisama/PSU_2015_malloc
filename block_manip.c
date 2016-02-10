@@ -49,7 +49,6 @@ void		merge_block(t_block *current)
   tmp = current->next;
   while (tmp != NULL && tmp->is_free == TRUE)
     {
-      tmp->m_key = 0;
       current->p_size += tmp->p_size + B_SIZE;
       tmp = tmp->next;
     }

@@ -15,11 +15,9 @@ pthread_mutex_t	g_lock = PTHREAD_MUTEX_INITIALIZER;
 
 void		*malloc(size_t size)
 {
-  t_block	*tmp;
   t_block	*new;
 
   new = NULL;
-  tmp = g_mem;
   if ((intptr_t)size <= 0)
     return (NULL);
   size = aligned_size(size, sizeof(void*));
