@@ -32,11 +32,11 @@ void		split_block(size_t size, t_block *current)
   if (current != NULL && current->p_size > (size + B_SIZE))
     {
       new_block = (t_block*)((intptr_t)current + size + B_SIZE);
+      new_block->prev = current;
       new_block->p_size = current->p_size - B_SIZE - size;
       current->p_size = size;
       new_block->next = current->next;
       current->next = new_block;
-      new_block->prev = current;
       new_block->m_key = MAGIC;
       new_block->is_free = TRUE;
     }
@@ -50,6 +50,7 @@ void		merge_block(t_block *current)
   while (tmp != NULL && tmp->is_free == TRUE)
     {
       current->p_size += tmp->p_size + B_SIZE;
+      tmp->m_key = 0;
       tmp = tmp->next;
     }
   current->next = tmp;

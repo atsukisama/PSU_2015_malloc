@@ -41,14 +41,14 @@ t_block		*ask_mem(size_t size)
   t_block	*block;
 
   block = sbrk(0);
-  if (sbrk(aligned_size(size + B_SIZE, P_SIZE)) == (void*)-1)
+  if (sbrk(aligned_size(size + B_SIZE, P_SIZE * 4)) == (void*)-1)
     {
       if (sbrk(size + B_SIZE) == (void*)-1)
 	return (NULL);
       block->p_size = size;
       return (block);
     }
-  block->p_size = aligned_size(size + B_SIZE, P_SIZE) - B_SIZE;
+  block->p_size = aligned_size(size + B_SIZE, P_SIZE * 4) - B_SIZE;
   return (block);
 }
 
