@@ -13,6 +13,8 @@
 # define TRUE 1
 # define FALSE 0
 # define MAGIC 0x42cafe69
+# define B_SIZE sizeof(t_block)
+# define P_SIZE sysconf(_SC_PAGESIZE)
 
 # include <sys/types.h>
 # include <stdio.h>

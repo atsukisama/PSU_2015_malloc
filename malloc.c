@@ -46,8 +46,8 @@ void		free(void *ptr)
       pthread_mutex_lock(&g_lock);
       block = (t_block*)((intptr_t)ptr - sizeof(t_block));
       block->is_free = TRUE;
-      if (block->prev != NULL && block->prev->is_free == TRUE)
-      	block = block->prev;
+      while (block->prev != NULL && block->prev->is_free == TRUE)
+	block = block->prev;
       merge_block(block);
       if (block->prev == NULL && block->next == NULL)
       	{
@@ -86,8 +86,8 @@ void		show_alloc_mem()
   printf("break : %p\n", sbrk(0));
   while (tmp != NULL)
     {
-      printf("%p - %p : %zu bytes",
-	     (void*)(tmp + 1), (void*)((intptr_t)tmp + sizeof(t_block) + tmp->p_size), tmp->p_size);
+      printf("%p - %p : %zu bytes", (void*)(tmp + 1),
+	     (void*)((intptr_t)tmp + B_SIZE + tmp->p_size), tmp->p_size);
       tmp = tmp->next;
     }
 }

@@ -18,7 +18,7 @@ int		is_valid(void *ptr, t_block *g_mem)
     return (FALSE);
   if ((intptr_t)ptr > (intptr_t)g_mem && (intptr_t)ptr < (intptr_t)sbrk(0))
     {
-      block = (t_block*)((intptr_t)ptr - sizeof(t_block));
+      block = (t_block*)((intptr_t)ptr - B_SIZE);
       if ((intptr_t)block >= (intptr_t)g_mem && block->m_key == MAGIC)
 	return (TRUE);
     }
@@ -29,10 +29,10 @@ void		split_block(size_t size, t_block *current)
 {
   t_block	*new_block;
 
-  if (current != NULL && current->p_size > (size + sizeof(t_block)))
+  if (current != NULL && current->p_size > (size + B_SIZE))
     {
-      new_block = (t_block*)((intptr_t)current + size + sizeof(t_block));
-      new_block->p_size = current->p_size - sizeof(t_block) - size;
+      new_block = (t_block*)((intptr_t)current + size + B_SIZE);
+      new_block->p_size = current->p_size - B_SIZE - size;
       current->p_size = size;
       new_block->next = current->next;
       current->next = new_block;
@@ -50,7 +50,7 @@ void		merge_block(t_block *current)
   while (tmp != NULL && tmp->is_free == TRUE)
     {
       tmp->m_key = 0;
-      current->p_size += tmp->p_size + sizeof(t_block);
+      current->p_size += tmp->p_size + B_SIZE;
       tmp = tmp->next;
     }
   current->next = tmp;
