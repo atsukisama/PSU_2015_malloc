@@ -1,5 +1,0 @@
-#! /bin/sh
-
-LOC=$(pwd)
-
-LD_PRELOAD=$LOC/libmy_malloc.so $1
