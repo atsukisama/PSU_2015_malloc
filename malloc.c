@@ -38,6 +38,7 @@ void		*malloc(size_t size)
 void		free(void *ptr)
 {
   t_block	*block;
+  size_t	rez;
 
   pthread_mutex_lock(&g_lock);
   if (is_valid(ptr, g_mem) == TRUE)
@@ -49,8 +50,6 @@ void		free(void *ptr)
       merge_block(block);
       if (block->next == NULL)
 	{
-	  size_t	rez;
-
 	  rez = (block->p_size / P_SIZE) * P_SIZE;
 	  sbrk(-rez);
 	  block->p_size -= rez;
