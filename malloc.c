@@ -5,7 +5,7 @@
 ** Login   <paul.kerebel@epitech.eu>
 ** 
 ** Started on  Sun Jan 31 03:21:51 2016 kerebe_p
-** Last update Wed Feb 10 16:13:45 2016 Thomas Martins
+** Last update Sat Feb 13 17:31:38 2016 Thomas Martins
 */
 
 #include "malloc.h"
@@ -40,6 +40,7 @@ void		free(void *ptr)
   t_block	*block;
   size_t	rez;
 
+  rez = 0;
   pthread_mutex_lock(&g_lock);
   if (is_valid(ptr, g_mem) == TRUE)
     {
