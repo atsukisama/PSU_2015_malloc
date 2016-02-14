@@ -21,7 +21,6 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <string.h>
-# include <pthread.h>
 
 typedef struct		s_block
 {

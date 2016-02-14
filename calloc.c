@@ -14,9 +14,7 @@ void		*calloc(size_t nb, size_t size)
 {
   void		*ptr;
 
-  if (size <= 48)
-    size = 48;
-  if ((nb * size) / size != nb && size != 0)
+  if (nb == 0 || size == 0)
     return (NULL);
   if ((ptr = malloc((nb * size))) == NULL)
     return (NULL);
