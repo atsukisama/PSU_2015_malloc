@@ -5,7 +5,7 @@
 ** Login   <paul.kerebel@epitech.eu>
 ** 
 ** Started on  Sun Jan 31 03:21:51 2016 kerebe_p
-** Last update Sun Feb 14 18:16:04 2016 Thomas Martins
+** Last update Sun Feb 14 20:38:30 2016 Thomas Martins
 */
 
 #include "malloc.h"
@@ -25,7 +25,7 @@ void		*malloc(size_t size)
   if (new == NULL)
     {
       return (NULL);
-    };
+    }
   new->is_free = FALSE;
   split_block(size, new);
   return (new + 1);

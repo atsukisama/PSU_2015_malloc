@@ -5,14 +5,14 @@
 ** Login   <mart_4@epitech.net>
 **
 ** Started on  Sun Feb 14 16:40:32 2016 Thomas Martins
-** Last update Sun Feb 14 19:22:28 2016 Thomas Martins
+** Last update Sun Feb 14 20:36:00 2016 Thomas Martins
 */
 
 #include "malloc.h"
 
-void		*calloc(size_t nb, size_t size)
+void	*calloc(size_t nb, size_t size)
 {
-  void		*ptr;
+  void	*ptr;
 
   if (nb == 0 || size == 0)
     return (NULL);

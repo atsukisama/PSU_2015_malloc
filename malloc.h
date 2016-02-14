@@ -5,7 +5,7 @@
 ** Login   <paul.kerebel@epitech.eu>
 ** 
 ** Started on  Sun Jan 31 03:22:38 2016 kerebe_p
-** Last update Sun Feb 14 19:21:58 2016 Thomas Martins
+** Last update Sun Feb 14 20:40:41 2016 Thomas Martins
 */
 
 #ifndef _MALLOC_H_
@@ -34,7 +34,6 @@ typedef struct		s_block
 void			*malloc(size_t size);
 void			free(void *ptr);
 void			*realloc(void *ptr, size_t size);
-
 size_t			aligned_size(size_t size, size_t align);
 void			show_alloc_mem();
 t_block			*check_block(size_t size, t_block *g_mem);
@@ -42,7 +41,6 @@ t_block			*create_block(size_t size, t_block **g_mem);
 void			split_block(size_t size, t_block *current);
 void			merge_block(t_block *current);
 int			is_valid(void *ptr, t_block *g_mem);
-
 void			*calloc(size_t nb, size_t size);
 
 #endif			/* MALLOC */
