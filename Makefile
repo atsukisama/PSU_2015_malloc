@@ -5,7 +5,7 @@
 ## Login   <mart_4@epitech.net>
 ##
 ## Started on  Mon Jan 25 23:08:27 2016 Thomas Martins
-## Last update Sat Jan 30 02:32:36 2016 Thomas martin
+## Last update Sun Feb 14 19:21:50 2016 Thomas Martins
 ##
 
 NAME 	= libmy_malloc_$(HOSTTYPE).so
@@ -17,6 +17,7 @@ CC      = gcc
 SRC	= malloc.c 		\
 	  block.c 		\
 	  block_manip.c		\
+	 calloc.c		\
 
 RM      = rm -f
 

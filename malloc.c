@@ -5,7 +5,7 @@
 ** Login   <paul.kerebel@epitech.eu>
 ** 
 ** Started on  Sun Jan 31 03:21:51 2016 kerebe_p
-** Last update Sun Feb 14 11:29:35 2016 Thomas Martins
+** Last update Sun Feb 14 18:16:04 2016 Thomas Martins
 */
 
 #include "malloc.h"
@@ -101,7 +101,7 @@ void		*realloc(void *ptr, size_t size)
       return (ptr);
     }
   //printf("realloc return (NULL)\n");
-  return (ptr);
+  return (malloc(size));
 }
 
 void		show_alloc_mem()
