@@ -1,4 +1,0 @@
-
-DIR=$(pwd)
-
-LD_PRELOAD=$DIR/libmy_malloc.so $1

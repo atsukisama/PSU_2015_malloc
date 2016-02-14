@@ -5,21 +5,21 @@
 ** Login   <paul.kerebel@epitech.eu>
 ** 
 ** Started on  Sun Jan 31 16:26:56 2016 kerebe_p
-** Last update Wed Feb 10 16:12:29 2016 Thomas Martins
+** Last update Sun Feb 14 11:33:09 2016 Thomas Martins
 */
 
 #include "malloc.h"
 
-int		is_valid(void *ptr, t_block *g_mem)
+int		is_valid(void *ptr, t_block *mem)
 {
   t_block	*block;
 
-  if (g_mem == NULL)
+  if (mem == NULL)
     return (FALSE);
-  if ((intptr_t)ptr > (intptr_t)g_mem && (intptr_t)ptr < (intptr_t)sbrk(0))
+  if ((intptr_t)ptr > (intptr_t)mem && (intptr_t)ptr < (intptr_t)sbrk(0))
     {
       block = (t_block*)((intptr_t)ptr - B_SIZE);
-      if ((intptr_t)block >= (intptr_t)g_mem && block->m_key == MAGIC)
+      if ((intptr_t)block >= (intptr_t)mem && block->m_key == MAGIC)
 	return (TRUE);
     }
   return (FALSE);

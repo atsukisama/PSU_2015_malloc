@@ -5,11 +5,12 @@
 ** Login   <paul.kerebel@epitech.eu>
 ** 
 ** Started on  Sun Jan 31 03:22:38 2016 kerebe_p
-** Last update Fri Feb  5 15:58:25 2016 Thomas Martins
+** Last update Sun Feb 14 11:30:15 2016 Thomas Martins
 */
 
 #ifndef _MALLOC_H_
 # define _MALLOC_H_
+
 # define TRUE 1
 # define FALSE 0
 # define MAGIC 0x42cafe69
@@ -43,4 +44,4 @@ void			split_block(size_t size, t_block *current);
 void			merge_block(t_block *current);
 int			is_valid(void *ptr, t_block *g_mem);
 
-#endif /* MALLOC */
+#endif			/* MALLOC */

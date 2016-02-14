@@ -5,7 +5,7 @@
 ** Login   <paul.kerebel@epitech.eu>
 ** 
 ** Started on  Sun Jan 31 03:35:35 2016 kerebe_p
-** Last update Sun Jan 31 03:35:35 2016 kerebe_p
+** Last update Sun Feb 14 11:33:52 2016 Thomas Martins
 */
 
 #include "malloc.h"
@@ -18,13 +18,13 @@ size_t		aligned_size(size_t size, size_t align)
   return (size);
 }
 
-t_block		*check_block(size_t size, t_block *g_mem)
+t_block		*check_block(size_t size, t_block *mem)
 {
   t_block	*tmp;
   t_block	*ret;
 
   ret = NULL;
-  tmp = g_mem;
+  tmp = mem;
   while (tmp != NULL)
     {
       if ((tmp->p_size >= size) && (tmp->is_free == TRUE))
@@ -54,20 +54,20 @@ t_block		*ask_mem(size_t size)
   return (block);
 }
 
-t_block		*create_block(size_t size, t_block **g_mem)
+t_block		*create_block(size_t size, t_block **mem)
 {
   t_block	*new_block;
   t_block	*tmp;
 
-  tmp = *g_mem;
+  tmp = *mem;
   new_block = ask_mem(size);
   if (new_block == NULL)
     return (NULL);
   while (tmp != NULL && tmp->next != NULL)
     tmp = tmp->next;
-  if (*g_mem == NULL)
+  if (*mem == NULL)
     {
-      *g_mem = new_block;
+      *mem = new_block;
       new_block->prev = NULL;
     }
   else
