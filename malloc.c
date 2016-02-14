@@ -19,7 +19,7 @@ void		*malloc(size_t size)
   new = NULL;
   if ((intptr_t)size <= 0)
     return (NULL);
-  size = aligned_size(size, sizeof(void*));
+  size = aligned_size(size, 16);
   if ((new = check_block(size, g_mem)) == NULL)
     new = create_block(size, &g_mem);
   if (new == NULL)
@@ -78,7 +78,7 @@ void		*realloc(void *ptr, size_t size)
   	}
       return (ptr);
     }
-  return (NULL);
+  return (malloc(size));
 }
 
 void		show_alloc_mem()
