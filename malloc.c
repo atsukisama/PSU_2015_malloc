@@ -42,6 +42,7 @@ void		free(void *ptr)
   t_block	*block;
   size_t	rez;
 
+  return ;
   //printf("free start\n");
   rez = 0;
   pthread_mutex_lock(&g_lock);
@@ -74,7 +75,7 @@ void		*realloc(void *ptr, size_t size)
   void		*new;
 
   //printf("realloc start\n");
-  if (!ptr)
+  if (ptr == NULL)
     {
       //printf("realloc malloc(size)\n");
       return (malloc(size));
@@ -100,7 +101,7 @@ void		*realloc(void *ptr, size_t size)
       return (ptr);
     }
   //printf("realloc return (NULL)\n");
-  return (malloc(size));
+  return (ptr);
 }
 
 void		show_alloc_mem()
