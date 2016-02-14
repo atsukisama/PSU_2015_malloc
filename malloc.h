@@ -36,11 +36,11 @@ void			free(void *ptr);
 void			*realloc(void *ptr, size_t size);
 size_t			aligned_size(size_t size, size_t align);
 void			show_alloc_mem();
-t_block			*check_block(size_t size, t_block *g_mem);
-t_block			*create_block(size_t size, t_block **g_mem);
+t_block			*check_block(size_t size, t_block *mem);
+t_block			*create_block(size_t size, t_block **mem);
 void			split_block(size_t size, t_block *current);
 void			merge_block(t_block *current);
-int			is_valid(void *ptr, t_block *g_mem);
+int			is_valid(void *ptr, t_block *mem);
 void			*calloc(size_t nb, size_t size);
 
 #endif			/* MALLOC */
