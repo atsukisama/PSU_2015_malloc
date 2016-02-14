@@ -5,7 +5,7 @@
 ** Login   <paul.kerebel@epitech.eu>
 ** 
 ** Started on  Sun Jan 31 03:21:51 2016 kerebe_p
-** Last update Sun Feb 14 20:38:30 2016 Thomas Martins
+** Last update Sun Feb 14 21:38:53 2016 Thomas Martins
 */
 
 #include "malloc.h"
@@ -19,7 +19,7 @@ void		*malloc(size_t size)
   new = NULL;
   if ((intptr_t)size <= 0)
     return (NULL);
-  size = aligned_size(size, 16);
+  size = aligned_size(size, sizeof(void *));
   if ((new = check_block(size, g_mem)) == NULL)
     new = create_block(size, &g_mem);
   if (new == NULL)
@@ -86,11 +86,11 @@ void		show_alloc_mem()
   t_block	*tmp;
 
   tmp = g_mem;
-  printf("break : %p\n", sbrk(0));
+  printf("break : 0x%lX\n", (size_t)sbrk(0));
   while (tmp != NULL)
     {
-      printf("%p - %p : %zu bytes", (void*)(tmp + 1),
-	     (void*)((intptr_t)tmp + B_SIZE + tmp->p_size), tmp->p_size);
+      printf("0x%lX - 0x%lX : %zu bytes\n", (size_t)(tmp + 1),
+	     (size_t)((intptr_t)tmp + B_SIZE + tmp->p_size), tmp->p_size);
       tmp = tmp->next;
     }
 }
